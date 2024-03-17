@@ -6,8 +6,6 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.apointmentManagementSystem.enumEntity.AppointmentResponse;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,16 +33,14 @@ public class AppointmentEntity {
 	
 	private LocalDateTime appointmentDate;
 	
-	private AppointmentResponse response;
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "appointment")
+	private List<UserAppointment> appointment;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
-	private List<AppointmentHistory> appointmentHistory;
+	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User manager;
 	
-	@ManyToOne(cascade =  CascadeType.ALL)
-	private User developer;
 	
 	private boolean isActive = true;
 	private int createdBy;

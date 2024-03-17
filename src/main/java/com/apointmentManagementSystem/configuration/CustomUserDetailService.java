@@ -29,6 +29,7 @@ public class CustomUserDetailService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		User getUser = userRepository.findByEmailIgnoreCaseAndIsActiveTrue(username).orElseThrow(() -> new ResourceNotFoundException(ErrorMessageConstant.INVALID_USERNAME_PASSWORD));
+		
 		return new CustomeUserDetail(getUser , getAuthority(getUser.getRole()));
 	}
 	

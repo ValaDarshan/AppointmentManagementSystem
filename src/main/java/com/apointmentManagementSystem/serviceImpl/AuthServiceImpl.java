@@ -41,7 +41,6 @@ public class AuthServiceImpl implements AuthService {
 	@Override
 	public AuthResponseDto authenticateUser(AuthRequestDto authRequest) throws UserPrincipalNotFoundException {
 	
-	
 		authManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(), 
 																		 authRequest.getPassword()));
 		

@@ -1,9 +1,12 @@
 package com.apointmentManagementSystem.serviceImpl;
 
+import org.springframework.stereotype.Service;
+
 import com.apointmentManagementSystem.dto.AppointmentRequestDto;
 import com.apointmentManagementSystem.enumEntity.AppointmentResponse;
 import com.apointmentManagementSystem.service.AppointmentService;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService{
 
 	@Override

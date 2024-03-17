@@ -6,15 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
-public class PermissionDto {
+public class PermissionResponseDto {
 	
+	private int id;
 	private String actionName;
 	private String description;
 	private Method method;
 	private String baseUrl;
-
 
 }

@@ -42,8 +42,8 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "manager" )
 	private List<AppointmentEntity> managerAppointment;
 	
-	@OneToMany(cascade = CascadeType.ALL , mappedBy = "developer" )
-	private List<AppointmentEntity> developerAppointment;
+	@OneToMany(cascade = CascadeType.ALL , mappedBy = "developer")
+	private List<UserAppointment> developer;
 	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "blockedBy")

@@ -12,6 +12,7 @@ import com.apointmentManagementSystem.entity.User;
 import jakarta.transaction.Transactional;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
+
 	
 	Optional<User> findByEmailIgnoreCaseAndIsActiveTrue(String email);
 	

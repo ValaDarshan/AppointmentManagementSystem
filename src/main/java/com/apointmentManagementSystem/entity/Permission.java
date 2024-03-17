@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.apointmentManagementSystem.enumEntity.Method;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,6 +33,9 @@ public class Permission {
 	
 	private String action;
 	private String description;
+	private String baseUrl;
+	private Method method;
+	
 	
 	@OneToMany(cascade = CascadeType.ALL , mappedBy = "permission")
 	private List<RolePermission> rolePermission;

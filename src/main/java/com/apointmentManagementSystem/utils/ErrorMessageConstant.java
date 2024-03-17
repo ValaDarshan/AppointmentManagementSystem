@@ -9,5 +9,7 @@ public class ErrorMessageConstant {
 	public static final String ROLE_NOT_EXIST = "role does not exist!";
 	public static final String ROLE_ALREADY_EXIST = "role already exist";
 	
-
-}
+	public static final String PERMISSION_NOT_EXIST = "permission does not exist!";
+	public static final String PERMISSION_ALREADY_EXIST = "permission already exist";
+	
+	}

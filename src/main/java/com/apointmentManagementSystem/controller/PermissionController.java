@@ -14,57 +14,58 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.apointmentManagementSystem.dto.ErrorMessageResponseDto;
 import com.apointmentManagementSystem.dto.MessageResponseDto;
-import com.apointmentManagementSystem.dto.RoleDto;
-import com.apointmentManagementSystem.service.RoleService;
+import com.apointmentManagementSystem.dto.PermissionDto;
+import com.apointmentManagementSystem.service.PermissionService;
 import com.apointmentManagementSystem.utils.SuccessMessageConstant;
 
 @RestController
-@RequestMapping("/role")
-public class RoleController {
+@RequestMapping("/permissions")
+public class PermissionController {
 
 	@Autowired
-	private RoleService roleService;
+	private PermissionService permissionService;
+
+	@GetMapping
+	public ResponseEntity<?> getAllPermissions() {
+		try {
+
+			return ResponseEntity.ok(new MessageResponseDto(SuccessMessageConstant.PERMISSION_FETCHED,
+					permissionService.getAllPermissions(), 200));
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(new ErrorMessageResponseDto(e.getMessage(), 400));
+		}
+	}
 
 	@PostMapping
-	public ResponseEntity<?> addRole(@RequestBody RoleDto roleDto, @RequestAttribute("X-user-id") int loggedUserId) {
+	public ResponseEntity<?> addPermission(@RequestBody PermissionDto permissionDto,
+			@RequestAttribute(name = "X-user-id") int loggedUser) {
 		try {
-			
-			return ResponseEntity
-					.ok(new MessageResponseDto(SuccessMessageConstant.ROLE_ADDED, roleService.addRole(roleDto, loggedUserId) ,200));
-		} catch (Exception e) {
-			return ResponseEntity.badRequest().body(new ErrorMessageResponseDto(e.getMessage(), 400));
-		}		
-	}
-	
-	@GetMapping
-	public ResponseEntity<?> getAllRole() {
-		try {
-			
-			return ResponseEntity
-					.ok(new MessageResponseDto(SuccessMessageConstant.ROLE_FETCHED, roleService.getAllRoles() ,200));
+
+			return ResponseEntity.ok(new MessageResponseDto(SuccessMessageConstant.PERMISSION_ADDED,
+					permissionService.addPermission(permissionDto, loggedUser), 200));
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(new ErrorMessageResponseDto(e.getMessage(), 400));
 		}
 	}
 
-	@PutMapping("/{roleId}")
-	public ResponseEntity<?> updateRole(@PathVariable(name = "roleId") int roleId, @RequestBody RoleDto roleDto,
-			@RequestAttribute("X-user-id") int loggedUserId) {
+	@PutMapping("/{id}")
+	public ResponseEntity<?> updatePermission(@PathVariable("id") int id, @RequestBody PermissionDto permissionDto,
+			@RequestAttribute(name = "X-user-id") int loggedUser) {
 		try {
-			
-			return ResponseEntity
-					.ok(new MessageResponseDto(SuccessMessageConstant.ROLE_UPDATED, roleService.updateRole(roleId, roleDto, loggedUserId) ,200));
+			return ResponseEntity.ok(new MessageResponseDto(SuccessMessageConstant.PERMISSION_UPDATED,
+					permissionService.updatePermission(id, permissionDto, loggedUser), 200));
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(new ErrorMessageResponseDto(e.getMessage(), 400));
 		}
 	}
 
-	@DeleteMapping("/{roleId}")
-	public ResponseEntity<?> deleteRole(@PathVariable(name = "roleId") int roleId , @RequestAttribute("X-user-id") int loggedUserId) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deletePermission(@PathVariable("id") int id,
+			@RequestAttribute(name = "X-user-id") int loggedUser) {
 		try {
-			roleService.deleteRole(roleId, loggedUserId);
-			return ResponseEntity
-					.ok(new MessageResponseDto(SuccessMessageConstant.ROLE_DELETED, null ,200));
+
+			permissionService.deletePermission(id, loggedUser);
+			return ResponseEntity.ok(new MessageResponseDto(SuccessMessageConstant.PERMISSION_DELETED, null, 200));
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(new ErrorMessageResponseDto(e.getMessage(), 400));
 		}

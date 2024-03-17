@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 
 public interface IPermissionRepository extends JpaRepository<Permission, Integer> {
 
-	boolean existsByActionNameIgnoreCaseAndIsActiveTrue(String name);
+	boolean existsByActionIgnoreCaseAndIsActiveTrue(String name);
 
 	List<Permission> findByIdInAndIsActiveTrue(List<Integer> ids);
 
@@ -25,9 +25,9 @@ public interface IPermissionRepository extends JpaRepository<Permission, Integer
 	@Query(value = "update permission set is_active=false , updated_by=:loggedUser where id=:id", nativeQuery = true)
 	void deleteById(@Param("id") int id , @Param("loggedUser") int userId);
 	
-	Optional<Permission> findByActionNameAndIsActiveTrue(String actionName);
+	Optional<Permission> findByActionAndIsActiveTrue(String actionName);
 	
-	Optional<Permission> findByIdAndIsActiveTrue(Long permissionId);
+	Optional<Permission> findByIdAndIsActiveTrue(int permissionId);
 
 	
 

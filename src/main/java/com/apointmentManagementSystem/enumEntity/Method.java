@@ -1,7 +1,7 @@
 package com.apointmentManagementSystem.enumEntity;
 
-public enum RoleEnum {
+public enum Method {
 	
-	MANAGER , DEVELOPER
+	GET, POST, PUT, DELETE ,PATCH 
 
 }

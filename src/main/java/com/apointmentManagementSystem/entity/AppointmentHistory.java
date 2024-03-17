@@ -32,7 +32,7 @@ public class AppointmentHistory {
 	private boolean isActive = true;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private AppointmentEntity appointment;
+	private UserAppointment userAppointment;
 	
 	private int createdBy;
 	

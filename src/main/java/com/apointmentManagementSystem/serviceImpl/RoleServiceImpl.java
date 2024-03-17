@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.apointmentManagementSystem.dto.RoleDto;
 import com.apointmentManagementSystem.dto.RoleResponseDto;
@@ -15,6 +16,7 @@ import com.apointmentManagementSystem.repository.IRoleRepository;
 import com.apointmentManagementSystem.service.RoleService;
 import com.apointmentManagementSystem.utils.ErrorMessageConstant;
 
+@Service
 public class RoleServiceImpl implements RoleService {
 
 	@Autowired

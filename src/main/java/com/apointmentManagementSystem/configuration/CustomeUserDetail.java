@@ -9,8 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.apointmentManagementSystem.entity.User;
 
-import lombok.RequiredArgsConstructor;
-
 public class CustomeUserDetail implements UserDetails {
 
 	private static final long serialVersionUID = -4915978794891806571L;

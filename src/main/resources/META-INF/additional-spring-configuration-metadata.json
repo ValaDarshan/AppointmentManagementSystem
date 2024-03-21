@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "sprint.mail.password",
+  "type": "java.lang.String",
+  "description": "A description for 'sprint.mail.password'"
+}]}
